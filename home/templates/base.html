@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Título{% endblock %}</title>
+    <style>
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Index</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'sobre' %}">Sobre</a></li>
+            <li><a href="{% url 'entre_em_contato' %}">Contato</a></li>
+            <li><a href="{% url 'exibir_item' id=1 %}">Item</a></li> <!-- Exemplo com ID 1 -->
+        </ul>
+    </nav>
+    <div>
+        {% block content %}
+        <h1>Conteúdo padrão</h1>
+        {% endblock %}
+    </div>
+</body>
+</html>
