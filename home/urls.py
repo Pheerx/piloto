@@ -7,5 +7,6 @@ urlpatterns = [
     path('home/', views.home, name="home"),
     path('sobre/', views.sobre, name="sobre"),
     path('contato/', views.contato, name="entre_em_contato"),
-    path('item/<int:id>/', views.exibir_item, name="exibir_item"),
+     path('exibir_item/<int:id>/', views.exibir_item, name="exibir_item"),
+    path('diasemana/<int:dia>/', views.dia_semana, name="dia_semana"),
 ]
