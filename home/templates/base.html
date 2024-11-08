@@ -95,23 +95,14 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a href="{% url 'exibir_item' id=1 %}" class="nav-link"><i class="fas fa-info-circle"></i> <span>Exibir Item</span></a>
+
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Charts</span></a>
-                <ul class="submenu nav flex-column">
-                    <li class="nav-item">
-                        <a href="{% url 'exibir_item' id=1 %}" class="nav-link"><i class="fas fa-info-circle"></i> <span>Exibir Item</span></a>
-                    </li>
-                    <li class="nav-item">
-                         <a href="{% url 'dia_semana' dia=3 %}" class="nav-link"><i class="fas fa-calendar-day"></i> <span>Dia da Semana</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Line Chart</a>
-                    </li>
-                </ul>
+                <a href="{% url 'dia_semana' dia=3 %}" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Dias da Semana</span></a>
+               
             </li>
             <li class="nav-item">
-                <a href="{% url 'exibir_item' id=1 %}" class="nav-link"><i class="fas fa-info-circle"></i> <span>Exibir Item</span></a>
+                <a href="" class="nav-link"><i class="fas fa-info-circle"></i> <span> Item</span></a>
             </li>
             <li class="nav-item">
                 <a href="" class="nav-link"><i class="fas fa-cogs"></i> <span>Settings</span></a>
@@ -156,16 +147,12 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-custom">
                         <div class="card-header card-header-custom">
-                            <h5>New Orders</h5>
+                           {%block titulo %} <h5>id</h5>{%endblock%}
                         </div>
                         <div class="card-body card-body-custom">
-                            {% if section == "exibir_item" %}
-                                <p>Você está visualizando o item com ID: <strong>{{ id }}</strong></p>
-                            {% elif section == "dia_semana" %}
-                                <p>O dia correspondente ao número {{ dia }} é: <strong>{{ dia_nome }}</strong></p>
-                            {% else %}
-                                <p>Bem-vindo ao Dashboard! Selecione uma opção na barra lateral para visualizar detalhes.</p>
-                            {% endif %}
+                            {%block conteudo %}
+                            Bem-vindo ao Dashboard! Selecione uma opção na barra lateral para visualizar detalhes.
+                            {%endblock%}
                         </div>
                 
                     </div>

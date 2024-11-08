@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{%block titulo %} id {%endblock%%}
+
+{%block conteudo %} 
+{% if section == "exibir_item" %}
+Você está visualizando o item com ID: {{ id }}
+
+{% elif section == "dia_semana" %}
+O dia correspondente ao número {{ dia }} é: {{ dia_nome }}
+
+{% else %}
+Bem-vindo ao Dashboard! Selecione uma opção na barra lateral para visualizar detalhes.
+
+{% endif %}
+{%endblock%%}
