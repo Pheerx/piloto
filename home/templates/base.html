@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0092)https://suap.ifpi.edu.br/media/edu/material_aula/index-098d5bd16de049c6b2ffd42216c1024f.html -->
-<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./Admin Dashboard att_files/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -94,145 +93,36 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="{% url 'exibir_item' id=1 %}" class="nav-link"><i class="fas fa-info-circle"></i> <span>Exibir Item</span></a>
-
+                <a href="{% url 'exibir_item' id=1 %}" class="nav-link">Exibir Item</a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'dia_semana' dia=3 %}" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Dias da Semana</span></a>
-               
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link"><i class="fas fa-info-circle"></i> <span> Item</span></a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link"><i class="fas fa-cogs"></i> <span>Settings</span></a>
-                <ul class="submenu nav flex-column">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">General</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Security</a>
-                    </li>
-                </ul>
+                <a href="{% url 'dia_semana' dia=3 %}" class="nav-link">Dia da Semana</a>
             </li>
         </ul>
     </div>
 
     <!-- Main Content -->
     <div class="content" id="content">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <button class="btn btn-primary" id="toggle-sidebar"><i class="fas fa-bars"></i></button>
-                <a class="navbar-brand ms-3" href="">Dashboard</a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://suap.ifpi.edu.br/media/edu/material_aula/index-098d5bd16de049c6b2ffd42216c1024f.html#"><i class="fas fa-envelope"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://suap.ifpi.edu.br/media/edu/material_aula/index-098d5bd16de049c6b2ffd42216c1024f.html#"><i class="fas fa-bell"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://suap.ifpi.edu.br/media/edu/material_aula/index-098d5bd16de049c6b2ffd42216c1024f.html#"><i class="fas fa-user-circle"></i></a>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand ms-3" href="#">Dashboard</a>
             </div>
         </nav>
-
-        <!-- Dashboard Content -->
         <div class="container-fluid mt-4">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-12">
                     <div class="card card-custom">
-                        <div class="card-header card-header-custom">
-                           {%block titulo %} <h5>id</h5>{%endblock%}
+                        <div class="card-header">
+                            <h5>{% block titulo %}Título do Card{% endblock %}</h5>
                         </div>
-                        <div class="card-body card-body-custom">
-                            {%block conteudo %}
-                            Bem-vindo ao Dashboard! Selecione uma opção na barra lateral para visualizar detalhes.
-                            {%endblock%}
-                        </div>
-                
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-custom">
-                        <div class="card-header card-header-custom">
-                            <h5>Bounce Rate</h5>
-                        </div>
-                        <div class="card-body card-body-custom">
-                            <h3>53%</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-custom">
-                        <div class="card-header card-header-custom">
-                            <h5>User Registrations</h5>
-                        </div>
-                        <div class="card-body card-body-custom">
-                            <h3>44</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-custom">
-                        <div class="card-header card-header-custom">
-                            <h5>Unique Visitors</h5>
-                        </div>
-                        <div class="card-body card-body-custom">
-                            <h3>65</h3>
+                        <div class="card-body">
+                            {% block conteudo %}Conteúdo do dashboard{% endblock %}
                         </div>
                     </div>
                 </div>
             </div>
-			
-           <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card card-custom">
-                        <div class="card-header card-header-custom">
-                            <h5>New Orders</h5>
-                        </div>
-                        <div class="card-body card-body-custom">
-                            <h3>150</h3>
-                        </div>
-                    </div>
-                </div>
-      
-    
-
-            </div>
-
-			
-            <!-- Additional content like charts, tables, etc. can be added here -->
         </div>
     </div>
 
-    <script src="./Admin Dashboard att_files/bootstrap.bundle.min.js.download"></script>
-    <script>
-        // Sidebar toggle
-        document.getElementById('toggle-sidebar').addEventListener('click', function () {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('content').classList.toggle('active');
-        });
-
-        // Submenu toggle
-        document.querySelectorAll('.nav-item').forEach(function (item) {
-            item.addEventListener('click', function () {
-                if (this.classList.contains('open')) {
-                    this.classList.remove('open');
-                } else {
-                    // Fechar outros menus abertos
-                    document.querySelectorAll('.nav-item.open').forEach(function (openItem) {
-                        openItem.classList.remove('open');
-                    });
-                    this.classList.add('open');
-                }
-            });
-        });
-    </script>
-
-
-</body></html>
+</body>
+</html>
