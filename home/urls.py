@@ -7,4 +7,7 @@ urlpatterns = [
     path('dia/<int:dia>/', views.dia_semana, name='dia_semana'),  # Dia da Semana
     path('contato/', views.contato, name='contato'),  # Página de Contato
     path('produto/', views.produtos, name='produtos'),
+    path('produtos/fomulario_produto/', views.produto, name='fomulario2'), 
+    path('produtos/excluir/<int:id>/', views.excluir_produto, name='excluir_produto'),     
+]
 ]

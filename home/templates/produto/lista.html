@@ -1,37 +1,40 @@
+
 {% extends 'base.html' %}
 
-{% block titulo %} Produtos {% endblock %}
+{% block title %} Produtos {% endblock %}
 
-{% block titulo_page %} Listagem de Produtos {% endblock %}
+{% block titulo %} Listagem de produtos {% endblock %}
 
 {% block conteudo %}
 
-    Tabela de Produtos
+<!-- Botão para acessar o formulário algo de errado nao esta certo kkkkk  -->
+<button class="btn btn-primary" onclick="location.href='{% url 'fomulario2' %}'">Adicionar Produto</button>
 
-{% endblock %}
-<table class="table table-bordered table-hover w-75 mx-auto">
+<table class="table table-bordered table-hover">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Código</th>
             <th scope="col">Descrição</th>
             <th scope="col">Valor (R$)</th>
+            <th scope="col">Ações</th> 
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Notebook</td>
-            <td>2.500,00</td>
+        {% for produto in lista %}
+        <tr> <!-- Cada produto deve estar em uma nova linha -->
+            <td>{{ produto.id }}</td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.preco }}</td>
+            <td>
+                <form method="POST" action="{% url 'excluir_produto' produto.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Excluir</button> <!-- Usando um botão para excluir -->
+                </form>
+            </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Monitor</td>
-            <td>500,00</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Roteador Wi-Fi</td>
-            <td>150,00</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
+
+
+{% endblock %}
