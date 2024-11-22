@@ -35,3 +35,15 @@ def contato(request):
         'form': form,
     }
     return render(request, 'contato.html', contexto)
+
+def home(request):
+
+    context = { 
+        'username': 'Carlos',
+        'items': ['Lápis', 'Caneta', 'Borracha',]
+    }
+
+    return render(request, 'home;html', context)
+
+def produtos(request):
+    retunr render(request, 'produto/lista.html')
