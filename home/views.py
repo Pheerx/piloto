@@ -1,16 +1,14 @@
 from django.shortcuts import render
+from .forms import ContatoForm
 
 
 def index(request):
     return render(request, 'base.html')
 
 
-from django.shortcuts import render
-
-
 def exibir_item(request, id):
     return render(request, 'id.html', {
-        'id': id 
+        'id': id
     })
 
 
@@ -29,3 +27,11 @@ def dia_semana(request, dia):
         'dia': dia,
         'dia_nome': dia_nome
     })
+
+
+def contato(request):
+    form = ContatoForm()
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'contato.html', contexto)
