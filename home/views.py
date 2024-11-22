@@ -1,16 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ContatoForm
-
+from .models import Produto  # Certifique-se de que o modelo Produto existe
 
 def index(request):
     return render(request, 'base.html')
 
-
 def exibir_item(request, id):
-    return render(request, 'id.html', {
-        'id': id
-    })
-
+    return render(request, 'id.html', {'id': id})
 
 def dia_semana(request, dia):
     dias_semana = {
@@ -23,27 +19,33 @@ def dia_semana(request, dia):
         7: "Sábado"
     }
     dia_nome = dias_semana.get(dia, "Dia inválido")
-    return render(request, 'dia_semana.html', {
-        'dia': dia,
-        'dia_nome': dia_nome
-    })
-
+    return render(request, 'dia_semana.html', {'dia': dia, 'dia_nome': dia_nome})
 
 def contato(request):
-    form = ContatoForm()
-    contexto = {
-        'form': form,
-    }
-    return render(request, 'contato.html', contexto)
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            # Aqui você pode salvar os dados ou enviar um email, por exemplo
+            return redirect('index')  # Redireciona após o envio
+    else:
+        form = ContatoForm()
+    return render(request, 'contato.html', {'form': form})
 
 def home(request):
-
-    context = { 
+    context = {
         'username': 'Carlos',
-        'items': ['Lápis', 'Caneta', 'Borracha',]
+        'items': ['Lápis', 'Caneta', 'Borracha']
     }
-
-    return render(request, 'home;html', context)
+    return render(request, 'home.html', context)
 
 def produtos(request):
-    retunr render(request, 'produto/lista.html')
+    lista_produtos = Produto.objects.all()  # Obtém todos os produtos do banco
+    return render(request, 'produto/lista.html', {'lista': lista_produtos})
+
+def excluir_produto(request, id):
+    try:
+        produto = Produto.objects.get(id=id)
+        produto.delete()
+    except Produto.DoesNotExist:
+        pass  # Ou redirecione para uma página de erro
+    return redirect('produtos')
