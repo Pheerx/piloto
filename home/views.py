@@ -34,9 +34,11 @@ def contato(request):
 def home(request):
     context = {
         'username': 'Carlos',
-        'items': ['Lápis', 'Caneta', 'Borracha']
+        'items': ['Lápis', 'Caneta', 'Borracha'],
+        'welcome_message': 'Bem-vindo ao Dashboard!',
     }
     return render(request, 'home.html', context)
+
 
 def produtos(request):
     lista_produtos = Produto.objects.all()  # Obtém todos os produtos do banco

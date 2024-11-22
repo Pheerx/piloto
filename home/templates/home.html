@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+{% block titulo %} Página Inicial {% endblock %}
+
+{% block conteudo %}
+    <h2>{{ welcome_message }}</h2>
+    <p>Olá, {{ username }}! Aqui estão seus itens:</p>
+
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Escolha uma das opções no menu lateral para navegar.</p>
+{% endblock %}
