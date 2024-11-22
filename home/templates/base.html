@@ -32,15 +32,6 @@
         .sidebar .nav-link:hover {
             background-color: #495057;
         }
-        .sidebar .nav-link .fas {
-            margin-right: 10px;
-        }
-        .sidebar.active .nav-link .fas {
-            margin-right: 0;
-        }
-        .sidebar.active .nav-link span {
-            display: none;
-        }
         .content {
             margin-left: 250px;
             padding: 20px;
@@ -57,9 +48,6 @@
             color: #fff;
             font-weight: bold;
         }
-        .navbar .nav-item .nav-link {
-            color: #fff;
-        }
         .card-custom {
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -71,16 +59,6 @@
         }
         .card-body-custom {
             padding: 20px;
-        }
-        .submenu {
-            padding-left: 30px;
-            display: none;
-        }
-        .submenu .nav-link {
-            font-size: 14px;
-        }
-        .sidebar .nav-item.open .submenu {
-            display: block;
         }
     </style>
 </head>
@@ -106,47 +84,43 @@
 
     <!-- Main Content -->
     <div class="content" id="content">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="#">Dashboard</a>
             </div>
         </nav>
+
+        <!-- Container principal -->
         <div class="container-fluid mt-4">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="card card-custom">
-                        <div class="card-header">
+                        <div class="card-header card-header-custom">
                             <h5>{% block titulo %}Título do Card{% endblock %}</h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body card-body-custom">
                             {% block conteudo %}Conteúdo do dashboard{% endblock %}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid mt-4">
-                {% block cards %}{% endblock cards %}
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12"> 
-                        <div class="card card-custom">
-                            <div class="card-header card-header-custom">
-                                <h5>{% block titulo_page %}titulo_page{% endblock titulo_page %}</h5>
-                            </div>
-                            <div class="card-body card-body-custom">
-                                {% block conteudo %}conteudo{% endblock conteudo %}
-                            </div>
+
+            <!-- Seção para mais cartões -->
+            {% block cards %}
+            <div class="row mt-4">
+                <div class="col-lg-12 col-md-12 col-sm-12"> 
+                    <div class="card card-custom">
+                        <div class="card-header card-header-custom">
+                            <h5>{% block titulo_page %}Título da Página{% endblock titulo_page %}</h5>
+                        </div>
+                        <div class="card-body card-body-custom">
+                            {% block conteudo_adicional %}Conteúdo adicional{% endblock conteudo_adicional %}
                         </div>
                     </div>
                 </div>
             </div>
-            
-
-
-
-
-
-
-
+            {% endblock cards %}
         </div>
     </div>
 
