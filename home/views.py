@@ -68,3 +68,6 @@ def excluir_produto(request, id):
     except Produto.DoesNotExist:
         pass  # Ou redirecione para uma página de erro
     return redirect('produtos')
+
+def sobre(request):
+    return render(request, 'sobre.html') 
